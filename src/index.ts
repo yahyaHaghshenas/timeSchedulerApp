@@ -1,5 +1,7 @@
 import { v4 as uuidV4, V4Options } from "uuid"
 
+
+
 type Task = {
   id: string 
   title: string
@@ -12,8 +14,9 @@ const form = document.getElementById("new-task-form") as HTMLFormElement | null
 const input = document.querySelector<HTMLInputElement>("#new-task-title") 
 
 
-const tasks: Task[] =  loadTasks()
-tasks.forEach(addListItem)
+const tasks: Task[] = []
+// =  loadTasks()
+// tasks.forEach(addListItem)
 
 form?.addEventListener("submit", e => {
   e.preventDefault()
@@ -33,11 +36,21 @@ form?.addEventListener("submit", e => {
   input.value = ""
 })
 
+/**
+ * 
+ * @param task 
+ */
 
 function addListItem(task:Task){
   const item = document.createElement("li")
   const label = document.createElement("label")
   const checkbox = document.createElement("input")
+
+
+  // this is how you implenment bootstrap
+  checkbox.className = "form-check-input"
+
+  
   checkbox.type = "checkbox"
   checkbox.checked = task.completed
   checkbox.addEventListener("change", () => {
@@ -47,6 +60,8 @@ function addListItem(task:Task){
   label.append(checkbox, task.title)
   item.append(label)
   list?.append(item)
+
+
 
 }
 
