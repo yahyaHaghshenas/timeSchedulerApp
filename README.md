@@ -1,2 +1,2 @@
-# toDoList
-todo list application with typescript 
+# timeScheduler
+time scheduler application written with typescript 
